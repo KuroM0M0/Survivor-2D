@@ -1,0 +1,46 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BaumEnemy : BasisEnemy
+{
+    GameObject Player;
+    public Sprite ChangeSprite;
+    public float ChangeDistance = 10f;
+    public static bool Tot = false;
+    public SpriteRenderer SpriteRenderer;
+
+
+    public void Start() {
+        Player = GameObject.Find("Spieler");
+        health = 6;
+        EnemyType = "Baum";
+        setXP();
+    }
+
+    public void Update() {
+        float distance = Vector3.Distance(transform.position, Player.transform.position);
+        if(distance <= ChangeDistance) {
+            SpriteRenderer.sprite = ChangeSprite;
+        }
+        
+        if(health <= 0) {
+            Destroy(gameObject);
+            Tot = true;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        if(other.CompareTag("Bullet")) {
+            health--;
+        }
+        if(other.CompareTag("Schwert")) {
+            health--;
+        }
+    }
+
+    protected override float getLocalSpeed()
+    {
+        throw new System.NotImplementedException();
+    }
+}
