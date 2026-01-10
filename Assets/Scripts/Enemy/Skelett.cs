@@ -22,6 +22,7 @@ public class Skelett : BasisEnemy
         target = GameObject.Find("Spieler");
         StartCoroutine(WirfKnochen());
         health = 2;
+        maxHealth = 2;
         EnemyType = "Skelett";
     }
 

@@ -11,6 +11,7 @@ public class Kobold : BasisEnemy {
         Spieler = GameObject.FindGameObjectWithTag("Player");
         speed = 2.5f;
         health = 1;
+        maxHealth = 1;
         EnemyType = "Kobold";
     }
 

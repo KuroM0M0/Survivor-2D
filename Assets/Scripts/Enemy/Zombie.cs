@@ -14,6 +14,7 @@ public class Zombie : BasisEnemy {
         target = GameObject.Find("Spieler");
         speed = 1.5f;
         health = 1;
+        maxHealth = 1;
         EnemyType = "Zombie";
     }
 

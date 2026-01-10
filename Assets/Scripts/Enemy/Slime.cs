@@ -21,6 +21,7 @@ public class Slime : BasisEnemy
         target = GameObject.Find("Spieler");
         speed = 1;
         health = 5;
+        maxHealth = 5;
         EnemyType = "Slime";
     }
 

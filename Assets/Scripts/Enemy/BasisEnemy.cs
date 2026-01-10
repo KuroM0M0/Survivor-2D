@@ -6,6 +6,7 @@ public abstract class BasisEnemy : MonoBehaviour
 {
     public string EnemyType; //Wird nur zum Speichern verwendet
     public int health;
+    protected int maxHealth;
     static protected GameObject target;
     protected float speed;
     public GameObject CoinPrefab;
@@ -41,7 +42,7 @@ public abstract class BasisEnemy : MonoBehaviour
     protected void OnDeath(bool Coin, bool Item, int score) {
         if(health <= 0) {
             //Level
-            float xp = health / 2;
+            float xp = maxHealth / 2;
             GameManager.Instance.AddXP(xp);
 
             //Drops

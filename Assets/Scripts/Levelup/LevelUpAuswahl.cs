@@ -36,7 +36,7 @@ public class LevelUpAuswahl : MonoBehaviour {
         BasisPlayer.MuniDrop++;
     }
 
-    public void GeldDrop() {
+    public void GeldDropUpgrade() {
         BasisPlayer.GeldDrop++;
     }
 
@@ -50,5 +50,27 @@ public class LevelUpAuswahl : MonoBehaviour {
 
     public void Mehrfachschuss() {
         BasisPlayer.Mehrfachschuss++;
+    }
+
+
+    public void ZufallsWahl() {
+        int random = Random.Range(1, 8);
+        if (random == 1) {
+            DashFreischalten();
+        } else if (random == 2) {
+            WurfmesserFreischalten();
+        } else if (random == 3) {
+            SpeedUpgrade();
+        } else if (random == 4) {
+            MuniDropUpgrade();
+        } else if (random == 5) {
+            GeldDropUpgrade();
+        } else if (random == 6) {
+            AllDrop();
+        } else if (random == 7) {
+            DropChance();
+        } else if (random == 8) {
+            Mehrfachschuss();
+        }
     }
 }

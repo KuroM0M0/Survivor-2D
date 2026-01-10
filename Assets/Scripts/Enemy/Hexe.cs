@@ -19,6 +19,7 @@ public class Hexe : BasisEnemy
         //trank = GameObject.Find("SchadensTrank");
         StartCoroutine(WirfTrank());
         health = 5;
+        maxHealth = 5;
         EnemyType = "Hexe";
     } 
 

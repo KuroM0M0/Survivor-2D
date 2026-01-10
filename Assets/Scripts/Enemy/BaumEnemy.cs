@@ -14,6 +14,7 @@ public class BaumEnemy : BasisEnemy
     public void Start() {
         Player = GameObject.Find("Spieler");
         health = 6;
+        maxHealth = 6;
         EnemyType = "Baum";
     }
 

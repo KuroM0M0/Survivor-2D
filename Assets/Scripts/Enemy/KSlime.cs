@@ -11,6 +11,7 @@ public class KSlime : BasisEnemy
         CoinDropChance = 35;
         speed = 1;
         health = 1;
+        maxHealth = 1;
         EnemyType = "KSlime";
     }
 

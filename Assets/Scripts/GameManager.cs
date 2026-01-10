@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public float currentXp = 0;
     // Die XP, die man für das jeweilige Level braucht
     public List<int> xpThresholds = new List<int> { 50, 100, 200, 500, 1000 };
+    public Levelup levelupMenu;
 
 
 
@@ -63,9 +64,10 @@ public class GameManager : MonoBehaviour
                 currentLevel++;
                 
                 Debug.Log("LEVEL UP! Neues Level: " + currentLevel);
-                
-                // Hier kannst du das Speichern aufrufen
                 Save.SaveLevel(); 
+                if (levelupMenu != null) {
+                    levelupMenu.ShowModal();
+                }
                 
                 // Falls man direkt genug XP für 2 Level bekommen hat (Rekursion)
                 CheckLevelUp(); 

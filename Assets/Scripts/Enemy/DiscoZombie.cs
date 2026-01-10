@@ -24,6 +24,7 @@ public class DiscoZombie : BasisEnemy
         Player = GameObject.Find("Spieler");
         PlayerTr = Player.GetComponent<Transform>();
         health = 8;
+        maxHealth = 8;
         EnemyType = "DiscoZombie";
     } 
 
