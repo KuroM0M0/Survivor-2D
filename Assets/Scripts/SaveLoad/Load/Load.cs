@@ -10,6 +10,7 @@ public class Load : MonoBehaviour {
         LoadLeben();
         LoadAmmo();
         LoadCoin();
+        LoadXP();
         LoadLevel();
         LoadPosition();
         LoadSlimeKills();
@@ -53,6 +54,13 @@ public class Load : MonoBehaviour {
     public static int LoadCoin() {
         if(Check("Coin")) {
             return SaveGame.Load<int>("Coin");
+        }
+        return 0;
+    }
+
+    public static int LoadXP() {
+        if(Check("XP")) {
+            return SaveGame.Load<int>("XP");
         }
         return 0;
     }

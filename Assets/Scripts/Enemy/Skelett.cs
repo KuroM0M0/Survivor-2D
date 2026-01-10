@@ -8,7 +8,6 @@ public class Skelett : BasisEnemy
     int trefferSchwert = 90;
     int trefferMesser = 75;
     int trefferWurfmesser = 60;
-    int DropCoinChance = 60;
     float wurfInterval = 3f;
     public GameObject bonePrefab;
 
@@ -17,13 +16,13 @@ public class Skelett : BasisEnemy
 
 
     void Start() {
+        CoinDropChance = 60;
         speed = 1;
         DistanzZumSpieler = 2f;
         target = GameObject.Find("Spieler");
         StartCoroutine(WirfKnochen());
         health = 2;
         EnemyType = "Skelett";
-        setXP();
     }
 
 
@@ -36,17 +35,7 @@ public class Skelett : BasisEnemy
         
         //Bewegung für Gegner
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
-        
-
-
-        if(health <= 0) {
-            Destroy(gameObject);
-            Highscore.score += 2;
-
-            if(DropCoinChance > GameManager.Zufall) {
-                GameObject Coin = Instantiate(CoinPrefab, transform.position, Quaternion.identity);
-            }
-        }
+        OnDeath(true, false, 2);
     }
 
 
@@ -54,18 +43,18 @@ public class Skelett : BasisEnemy
 
 
     void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Bullet") && trefferKugel > GameManager.Zufall) {
+        if(other.CompareTag("Bullet") && trefferKugel > GameManager.Instance.GetRandomNumber()) {
             health--;
         }
 
-        if(other.CompareTag("Schwert") && trefferSchwert > GameManager.Zufall) {
+        if(other.CompareTag("Schwert") && trefferSchwert > GameManager.Instance.GetRandomNumber()) {
             health--;
         }
 
-        if(other.CompareTag("Messer") && trefferMesser > GameManager.Zufall) {
+        if(other.CompareTag("Messer") && trefferMesser > GameManager.Instance.GetRandomNumber()) {
             health -= 2;
         }
-        if(other.CompareTag("Wurfmesser") && trefferWurfmesser > GameManager.Zufall) {
+        if(other.CompareTag("Wurfmesser") && trefferWurfmesser > GameManager.Instance.GetRandomNumber()) {
             health--;
         }
     }

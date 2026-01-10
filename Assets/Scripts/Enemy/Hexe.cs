@@ -5,7 +5,7 @@ using UnityEngine;
 public class Hexe : BasisEnemy
 {
     public GameObject TrankPrefab;
-    GameObject trank;
+    //GameObject trank;
     int DropChance = 80;
     float WurfInterval = 3f;
 
@@ -16,11 +16,10 @@ public class Hexe : BasisEnemy
     void Start() {
         speed = 1.5f;
         DistanzZumSpieler = 2.5f;
-        trank = GameObject.Find("SchadensTrank");
+        //trank = GameObject.Find("SchadensTrank");
         StartCoroutine(WirfTrank());
         health = 5;
         EnemyType = "Hexe";
-        setXP();
     } 
 
 
@@ -29,15 +28,7 @@ public class Hexe : BasisEnemy
         Eingefroren();
         Distanz();
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
-        if(health <= 0) {
-                if(DropChance > GameManager.Zufall) {
-                    GameObject Drop = Instantiate(DropPrefab, transform.position, Quaternion.identity);
-                }
-
-                Destroy(gameObject);
-                Highscore.score += 5;
-                GameObject Coin = Instantiate(CoinPrefab, transform.position, Quaternion.identity);
-            }
+        OnDeath(true, true, 5);
     }
 
 

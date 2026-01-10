@@ -7,7 +7,7 @@ public class BaumEnemy : BasisEnemy
     GameObject Player;
     public Sprite ChangeSprite;
     public float ChangeDistance = 10f;
-    public static bool Tot = false;
+    //public static bool Tot = false;
     public SpriteRenderer SpriteRenderer;
 
 
@@ -15,7 +15,6 @@ public class BaumEnemy : BasisEnemy
         Player = GameObject.Find("Spieler");
         health = 6;
         EnemyType = "Baum";
-        setXP();
     }
 
     public void Update() {
@@ -26,7 +25,7 @@ public class BaumEnemy : BasisEnemy
         
         if(health <= 0) {
             Destroy(gameObject);
-            Tot = true;
+            //Tot = true;
         }
     }
 

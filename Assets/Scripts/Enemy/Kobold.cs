@@ -12,16 +12,15 @@ public class Kobold : BasisEnemy {
         speed = 2.5f;
         health = 1;
         EnemyType = "Kobold";
-        setXP();
     }
 
     void Update() {
         Eingefroren();
         transform.position = Vector2.MoveTowards(transform.position, Spieler.transform.position, speed * Time.deltaTime);
         if(health <= 0) {
-                Destroy(gameObject);
-                Tot = true;
-            }
+            Destroy(gameObject);
+            Tot = true;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other) {

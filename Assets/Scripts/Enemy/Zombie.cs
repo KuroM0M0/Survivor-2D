@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Zombie : BasisEnemy {
-    int DropChance = 30;
-    int DropCoinChance = 70;
-    public static bool Tot = false;
+    //public static bool Tot = false;
     public static int statKill;
     
 
 
     void Start() {
+        CoinDropChance = 70;
+        ItemDropChance = 30;
         target = GameObject.Find("Spieler");
         speed = 1.5f;
         health = 1;
         EnemyType = "Zombie";
-        setXP();
     }
 
     void Update() {
@@ -23,19 +22,15 @@ public class Zombie : BasisEnemy {
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
         if(health <= 0) {
 
-            if(DropChance > GameManager.Zufall) {
-                GameObject Drop = Instantiate(DropPrefab, transform.position, Quaternion.identity);
-            }
+            //DropCoin();
+            //DropItem();
 
-            if(DropCoinChance > GameManager.Zufall) {
-                GameObject Coin = Instantiate(CoinPrefab, transform.position, Quaternion.identity);
-            } 
-
-            Destroy(gameObject);
-            Highscore.score++;
-            Tot = true;
+            //Destroy(gameObject);
+            //Highscore.score++;
+            //Tot = true;
             statKill++;
             }
+            OnDeath(true, true, 1);
     }
 
     void OnTriggerEnter2D(Collider2D other) {

@@ -13,7 +13,7 @@ public class Save : MonoBehaviour {
         //SaveScore();
         SaveCoin();
         SaveLeben();
-        SaveExp();
+        SaveXP();
         SaveWurfmesser();
         SaveAmmo();
         SaveSchwert();
@@ -34,7 +34,7 @@ public class Save : MonoBehaviour {
     }
 
     public static void SaveLevel() {
-        SaveGame.Save("Level", Levelup.Level);
+        SaveGame.Save("Level", GameManager.Instance.currentLevel);
     } 
 
     public static void SaveSlimeKills() {
@@ -53,8 +53,8 @@ public class Save : MonoBehaviour {
         SaveGame.Save("Leben", Leben.health);
     }
 
-    public static void SaveExp() {
-        SaveGame.Save("Exp", GameManager.exp);
+    public static void SaveXP() {
+        SaveGame.Save("XP", GameManager.Instance.currentXp);
     }
 
     public static void SaveWurfmesser() {

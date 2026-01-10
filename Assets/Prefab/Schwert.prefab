@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8998941675869123102}
   - component: {fileID: 8998941675869123101}
   - component: {fileID: 8998941675869123100}
+  - component: {fileID: 8015122624553291461}
   m_Layer: 0
   m_Name: Schwert
   m_TagString: Schwert
@@ -174,3 +175,19 @@ PolygonCollider2D:
       - {x: 0.09213351, y: 0.09054127}
       - {x: 0.048486613, y: 0.09108253}
   m_UseDelaunayMesh: 0
+--- !u!114 &8015122624553291461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8998941675869123091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0453bb1d2e24894eaa79f763a9e04fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pickup
+  itemData:
+    itemName: Schwert
+    icon: {fileID: 21300000, guid: 393a3981460ec55459b882f7df7aeb16, type: 3}
+    prefab: {fileID: 8998941675869123091}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class BasisEnemy : MonoBehaviour
 {
-    public string EnemyType;
+    public string EnemyType; //Wird nur zum Speichern verwendet
     public int health;
     static protected GameObject target;
     protected float speed;
@@ -13,13 +13,14 @@ public abstract class BasisEnemy : MonoBehaviour
     protected float distance;
     protected float DistanzZumSpieler;
     protected Transform player;
-    public static float xp;
+    protected int ItemDropChance;
+    protected int CoinDropChance = 100;
 
 
     protected void Distanz() {
         if(target && player) {
             distance = Vector2.Distance(player.position, transform.position);
-            if(distance <= DistanzZumSpieler) {
+            if(distance <= DistanzZumSpieler || ItemEinfrieren.eingefroren) {
                 speed = 0;
             } else {
                 speed = getLocalSpeed();
@@ -37,10 +38,44 @@ public abstract class BasisEnemy : MonoBehaviour
         }
     }
 
-    protected void setXP() {
-        xp = health/2;
-        if (target) {
-            player = target.GetComponent<Transform>();
+    protected void OnDeath(bool Coin, bool Item, int score) {
+        if(health <= 0) {
+            //Level
+            float xp = health / 2;
+            GameManager.Instance.AddXP(xp);
+
+            //Drops
+            if(Coin) {
+                DropCoin();
+            }
+            if(Item) {
+                DropItem();
+            }
+
+            //Highscore
+            Highscore.score += score;
+
+            //Delete Enemy
+            Destroy(gameObject);
+        }
+    }
+
+    protected void DropCoin() {
+        if(CoinDropChance >= GameManager.Instance.GetRandomNumber()) {
+            Instantiate(CoinPrefab, transform.position, Quaternion.identity);
+        }
+    }
+
+    protected void DropItem() {
+        float range = 0.5f;
+        Vector3 randomOffset = new Vector3(
+            Random.Range(-range, range), 
+            Random.Range(-range, range), 
+            0f
+        );
+        if(ItemDropChance >= GameManager.Instance.GetRandomNumber()) {
+            Vector3 enemyPosition = transform.position;
+            Instantiate(DropPrefab, enemyPosition + randomOffset, Quaternion.identity);
         }
     }
 }

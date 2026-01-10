@@ -9,15 +9,15 @@ public class DiscoZombie : BasisEnemy
     public List<GameObject> EnemyPrefab;
     float SpawnRadius = 2;
     float SpawnInterval = 10;
-    public static bool Tot = false;
-    int DropChance = 50;
+    //public static bool Tot = false;
 
 
 
 
 
     void Start() {
-        DistanzZumSpieler = 10;
+        DistanzZumSpieler = 10f;
+        ItemDropChance = 50;
         Distanz();
         StartCoroutine(SpawnEnemy());
         target = GameObject.FindGameObjectWithTag("Player");
@@ -25,7 +25,6 @@ public class DiscoZombie : BasisEnemy
         PlayerTr = Player.GetComponent<Transform>();
         health = 8;
         EnemyType = "DiscoZombie";
-        setXP();
     } 
 
 
@@ -33,20 +32,18 @@ public class DiscoZombie : BasisEnemy
 
 
     void Update() {
-        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
         Distanz();
         Eingefroren();
+        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
 
-        if(health <= 0) {
-                Highscore.score += 8;
-                Tot = true;
-                GameObject Coin = Instantiate(CoinPrefab, transform.position, Quaternion.identity);
-                
-               if(DropChance >= GameManager.Zufall) {
-                 GameObject Drop = Instantiate(DropPrefab, transform.position, Quaternion.identity);
-               }
-               Destroy(gameObject);
-            }
+        /*if(health <= 0) {
+            Highscore.score += 8;
+            //Tot = true;
+            DropCoin();
+            DropItem();
+            Destroy(gameObject);
+        }*/
+        OnDeath(true, true, 8);
     }
 
 

@@ -28,7 +28,7 @@ public class Ritter : MonoBehaviour
             if(Zufall < DropChance) {
                 GameObject Drop = Instantiate(DropPrefab, transform.position, Quaternion.identity);
             }
-            GameManager.exp -= 10;
+            GameManager.Instance.RemoveXP(10);
             Destroy(gameObject);
         }
     }

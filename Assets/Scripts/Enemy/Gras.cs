@@ -30,7 +30,7 @@ public class Gras : MonoBehaviour {
     }
 
     void Spawn() {
-        if(SpawnChance <= GameManager.Zufall) {
+        if(SpawnChance <= GameManager.Instance.GetRandomNumber()) {
             Instantiate(GrasPrefab, transform.position, Quaternion.identity);
         }
     }

@@ -53,5 +53,5 @@
     },
     "git.ignoreLimitWarning": true,
     "dotnet.preferCSharpExtension": true,
-    "dotnet.defaultSolution": "Survivors 2D (Unity6.2).sln"
+    "dotnet.defaultSolution": "Survivors 2D (Unity6.2).slnx"
 }
