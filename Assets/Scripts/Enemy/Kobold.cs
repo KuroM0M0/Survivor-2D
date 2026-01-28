@@ -18,10 +18,7 @@ public class Kobold : BasisEnemy {
     void Update() {
         Eingefroren();
         transform.position = Vector2.MoveTowards(transform.position, Spieler.transform.position, speed * Time.deltaTime);
-        if(health <= 0) {
-            Destroy(gameObject);
-            Tot = true;
-        }
+        OnDeath(false, false, 1);
     }
 
     void OnTriggerEnter2D(Collider2D other) {

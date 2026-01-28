@@ -51,6 +51,7 @@ public class Slime : BasisEnemy
             StartCoroutine(WaitForSlimeDead());
             Destroy(gameObject);
         }
+        OnDeath(false, true, 2);
     }
 
     void OnTriggerEnter2D(Collider2D other) {

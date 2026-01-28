@@ -42,7 +42,7 @@ public abstract class BasisEnemy : MonoBehaviour
     protected void OnDeath(bool Coin, bool Item, int score) {
         if(health <= 0) {
             //Level
-            float xp = maxHealth / 2;
+            float xp = maxHealth / 2f;
             GameManager.Instance.AddXP(xp);
 
             //Drops

@@ -24,10 +24,7 @@ public class BaumEnemy : BasisEnemy
             SpriteRenderer.sprite = ChangeSprite;
         }
         
-        if(health <= 0) {
-            Destroy(gameObject);
-            //Tot = true;
-        }
+        OnDeath(false, false, 2);
     }
 
     void OnTriggerEnter2D(Collider2D other) {
