@@ -6,6 +6,11 @@ using TMPro;
 
 public class Zelt : BasisShop
 {
+    int money;
+    void Start() {
+        money = GameManager.Instance.money;
+    }
+
     void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player")) {
             Save.SaveAll();
@@ -16,10 +21,10 @@ public class Zelt : BasisShop
 
 
     public void OnClickLeben() {
-        if(money >= 30 && Leben.health <3) {
+        if(money >= 30 && BasisPlayer.health < 3) {
             MoneyChange(-30);
-            Leben.health++;
-            Save.SaveLeben();
+            BasisPlayer.health++;
+            //Save.SaveLeben();
         }
     }
 
@@ -55,8 +60,8 @@ public class Zelt : BasisShop
     public void OnClickWurfmesser() {
         if(money >= 5) {
             MoneyChange(-5);
-            Wurfmesser.wurfmesserAnzahl++;
-            Save.SaveWurfmesser();
+            GameManager.Instance.wurfmesser++;
+            //Save.SaveWurfmesser();
         }
     }
 }

@@ -8,7 +8,7 @@ public class PlayerPickup : MonoBehaviour {
         Pickup pickup = other.GetComponent<Pickup>();
         if (pickup != null && pickup.itemData != null) {
             nearbyPickup = pickup;
-            Debug.Log($"Item in Reichweite: {pickup.itemData.itemName}");
+            //Debug.Log($"Item in Reichweite: {pickup.itemData.itemName}");
         }
     }
 
@@ -16,7 +16,7 @@ public class PlayerPickup : MonoBehaviour {
         Pickup pickup = other.GetComponent<Pickup>();
         if (pickup != null && pickup == nearbyPickup) {
             nearbyPickup = null;
-            Debug.Log("Pickup nicht mehr in Reichweite");
+            //Debug.Log("Pickup nicht mehr in Reichweite");
         }
     }
 
@@ -27,6 +27,9 @@ public class PlayerPickup : MonoBehaviour {
                 return;
             }
             Debug.Log("Pickup erkannt: " + nearbyPickup.itemData.itemName);
+            if(nearbyPickup.itemData.itemName == "Schwert") {
+                BasisPlayer.hatSchwert = true;
+            }
 
             bool aufgenommen = hotbar.PickupItem(nearbyPickup.itemData);
             if (aufgenommen) {

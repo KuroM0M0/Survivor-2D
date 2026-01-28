@@ -24,7 +24,7 @@ public class Lagerfeuer : MonoBehaviour
     }
 
     void Update() {
-        if(istBeimFeuer == true && Leben.health < 3 && !regenerationAn) {
+        if(istBeimFeuer == true && GameManager.Instance.health < 3 && !regenerationAn) {
             StartCoroutine(Regenerieren());
         }
 
@@ -42,8 +42,9 @@ public class Lagerfeuer : MonoBehaviour
             regenerationAn = true;
             yield return new WaitForSeconds(regenerationTimer);
             if(istBeimFeuer == true) {
-                Leben.health++;
-                Save.SaveLeben();
+                BasisPlayer.health++;
+                StatManager.Instance.AddStat("gainedHealth", 1);
+                //Save.SaveLeben();
                 Haltbarkeit--;
             }
             regenerationAn = false;

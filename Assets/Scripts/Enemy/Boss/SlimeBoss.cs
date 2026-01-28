@@ -21,9 +21,9 @@ public class SlimeBoss : BasisEnemy {
         if(health <= 0) {
             DropItem();
             GameManager.Instance.AddXP(20);
-            Save.SaveXP();
-            BasisShop.money += 15;
-            Save.SaveCoin();
+            //Save.SaveXP();
+            GameManager.Instance.money += 15;
+            //Save.SaveCoin();
             Destroy(gameObject);
         }
     }

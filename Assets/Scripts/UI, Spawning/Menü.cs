@@ -73,17 +73,18 @@ public class Menü : MonoBehaviour
     }
 
     public void OnStart() {
-        SceneManager.LoadScene("Game");
         Highscore.score = 0;
         Schuss.ammo = 24;
-        Leben.health = 3;
-        Wurfmesser.wurfmesserAnzahl = 3;
+        GameManager.Instance.health = 3;
+        GameManager.Instance.currentXp = 0;
+        GameManager.Instance.currentLevel = 0;
+        GameManager.Instance.wurfmesser = 3;
+        GameManager.Instance.normalSpeed = 1.6f;
         Time.timeScale = 1f;
         Pause.pausiert = false;
         ItemEinfrieren.eingefroren = false;
-        Save.SaveLeben();
-        Save.SaveAmmo();
-        Save.SaveWurfmesser();
+        SaveNew.SaveAll(); 
+        SceneManager.LoadScene("Game");
     }
 
     public void OnMenu() {

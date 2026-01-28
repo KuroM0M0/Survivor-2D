@@ -12,7 +12,7 @@ public class Coin : BasisShop
 
     void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player")) {
-            MoneyChange(1);
+            MoneyChange(BasisPlayer.coinDrop);
             Destroy(gameObject);
         }
     }

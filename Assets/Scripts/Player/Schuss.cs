@@ -22,7 +22,7 @@ public class Schuss : MonoBehaviour
         // Holen der Referenz auf den Rigidbody des Waffe-GameObjects
         rb = GetComponent<Rigidbody2D>();
         Munition.text = ammo.ToString();
-        WurfmesserMunition.text = Wurfmesser.wurfmesserAnzahl.ToString();
+        WurfmesserMunition.text = GameManager.Instance.wurfmesser.ToString();
     }
 
 
@@ -30,7 +30,7 @@ public class Schuss : MonoBehaviour
     void Update()
     {
         Munition.text = "Munition: " + ammo;
-        WurfmesserMunition.text = "Wurfmesser: " + Load.LoadWurfmesser();
+        WurfmesserMunition.text = "Wurfmesser: " + GameManager.Instance.wurfmesser;
         
         if(SchussrateTimer > 0) {
             SchussrateTimer -= 0.1f;
@@ -48,7 +48,7 @@ public class Schuss : MonoBehaviour
             
             // Kugel in die berechnete Richtung schießen
             bulletRB.linearVelocity = direction.normalized * bulletSpeed;
-            SaveGame.Save<int>("Ammo", ammo--);
+            ammo--;
             SchussrateTimer = Schussrate;
             }
         }

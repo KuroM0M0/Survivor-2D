@@ -9,13 +9,34 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
 
+    [Header("Spieler Status & Fortschritt")]
+    public int health;
+    public int ammo;
+    public int money;
+    public int wurfmesser;
+    public int SlimeKills;
+    public int score;
+    public int highScore;
 
     [Header("Level System")]
-    public int currentLevel = 0;
-    public float currentXp = 0;
-    // Die XP, die man für das jeweilige Level braucht
+    public int currentLevel;
+    public float currentXp;
     public List<int> xpThresholds = new List<int> { 50, 100, 200, 500, 1000 };
+    [HideInInspector]
     public Levelup levelupMenu;
+
+    [Header("Upgrades & Stats (Sync mit BasisPlayer)")]
+    public float speed;
+    public float normalSpeed;
+    public int ammoDrop;
+    public int coinDrop;
+    public float additionalDropChance;
+    public bool allDrop;
+    public int mehrfachschuss;
+    public bool hatDash;
+    public bool hatWurfmesser;
+    public bool hatSchwert;
+    public float unverwundbarTimer;
 
 
 
@@ -24,12 +45,11 @@ public class GameManager : MonoBehaviour
         // Sicherstellen, dass es nur einen GameManager gibt
         if (Instance == null) {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Optional: Bleibt beim Szenenwechsel erhalten
+            DontDestroyOnLoad(gameObject);
         } else {
             Destroy(gameObject);
         }
     }
-
 
 
 
@@ -44,6 +64,7 @@ public class GameManager : MonoBehaviour
     // --- LEVEL LOGIK ---
     public void AddXP(float amount) {
         currentXp += amount;
+        StatManager.Instance.AddStat("gainedXp", amount);
         Debug.Log("XP erhalten: " + amount + " | Gesamt: " + currentXp);
 
         CheckLevelUp();
@@ -63,8 +84,9 @@ public class GameManager : MonoBehaviour
                 currentXp -= xpThresholds[currentLevel]; // Rest-XP mitnehmen
                 currentLevel++;
                 
+                StatManager.Instance.AddStat("gainedLevel", 1);
                 Debug.Log("LEVEL UP! Neues Level: " + currentLevel);
-                Save.SaveLevel(); 
+                //Save.SaveLevel(); 
                 if (levelupMenu != null) {
                     levelupMenu.ShowModal();
                 }
@@ -73,5 +95,9 @@ public class GameManager : MonoBehaviour
                 CheckLevelUp(); 
             }
         }
+    }
+
+    void OnApplicationQuit() {
+        SaveNew.SaveAll(); 
     }
 }

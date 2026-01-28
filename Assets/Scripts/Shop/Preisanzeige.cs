@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class Preisanzeige : BasisShop, IPointerEnterHandler, IPointerExitHandler
-{
+public class Preisanzeige : BasisShop, IPointerEnterHandler, IPointerExitHandler {
 
     public TMP_Text hoverText;
+    public TMP_Text Geldanzeige;
 
 
     public void OnPointerEnter(PointerEventData eventData) {
@@ -20,6 +16,6 @@ public class Preisanzeige : BasisShop, IPointerEnterHandler, IPointerExitHandler
     }
 
     void Update() {
-        Geldanzeige.text = "Emeralds: " + Load.LoadCoin();
+        Geldanzeige.text = "Emeralds: " + GameManager.Instance.money;
     }
 }

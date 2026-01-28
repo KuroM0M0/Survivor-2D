@@ -13,21 +13,19 @@ public class SlimeKills : MonoBehaviour
     int spawnDistance = 10;                     //Die Distanz in der der Boss spawnt
 
     void Update() {
-        //Generiert Zufallszahl
-        Zufall = Random.Range(0, 100);
-
-
         // TODO Save.MonsterKills.Add("Slimes", allKills);
 
         //Holt die Zahl der Slimekills
-        kills = Load.LoadSlimeKills();  
+        kills = GameManager.Instance.SlimeKills;  
 
         //überprüft ob ein Slime gerade getötet wurde
         if(Slime.SlimeNowDead == true) {
+            Zufall = GameManager.Instance.GetRandomNumber();
             //Überprüft ob mehr als 100 Slimes tot sind und die Zufallszahl unter 20 ist
             if(kills >= 100 && SpawnChance <= Zufall) {
-                SaveGame.Save<int>("SlimeKills", 0);
+                GameManager.Instance.SlimeKills = 0;
                 SpawnBoss();
+                Slime.SlimeNowDead = false;
             }
         }
     }

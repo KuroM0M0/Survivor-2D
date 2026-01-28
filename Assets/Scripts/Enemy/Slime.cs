@@ -28,7 +28,7 @@ public class Slime : BasisEnemy
     
     void Update() {
         Eingefroren();
-        SlimeKills = Load.LoadSlimeKills();
+        SlimeKills = GameManager.Instance.SlimeKills;
         
         //Bewegung
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
