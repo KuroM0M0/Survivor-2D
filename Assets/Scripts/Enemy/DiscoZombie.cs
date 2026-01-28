@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class DiscoZombie : BasisEnemy
 {
-    GameObject Player;
-    Transform PlayerTr;
     public List<GameObject> EnemyPrefab;
     float SpawnRadius = 2;
     float SpawnInterval = 10;
@@ -21,8 +19,7 @@ public class DiscoZombie : BasisEnemy
         Distanz();
         StartCoroutine(SpawnEnemy());
         target = GameObject.FindGameObjectWithTag("Player");
-        Player = GameObject.Find("Spieler");
-        PlayerTr = Player.GetComponent<Transform>();
+        player = GameObject.Find("Spieler").transform;
         health = 8;
         maxHealth = 8;
         EnemyType = "DiscoZombie";
@@ -57,10 +54,6 @@ public class DiscoZombie : BasisEnemy
         }
         if(other.CompareTag("Schwert")) {
             health -= 3;
-        }
-
-        if(other.CompareTag("Messer")) {
-            health-= 2;
         }
     }
 

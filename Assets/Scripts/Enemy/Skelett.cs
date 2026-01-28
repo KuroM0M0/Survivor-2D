@@ -20,6 +20,7 @@ public class Skelett : BasisEnemy
         speed = 1;
         DistanzZumSpieler = 2f;
         target = GameObject.Find("Spieler");
+        player = GameObject.Find("Spieler").transform;
         StartCoroutine(WirfKnochen());
         health = 2;
         maxHealth = 2;
@@ -50,10 +51,6 @@ public class Skelett : BasisEnemy
 
         if(other.CompareTag("Schwert") && trefferSchwert > GameManager.Instance.GetRandomNumber()) {
             health--;
-        }
-
-        if(other.CompareTag("Messer") && trefferMesser > GameManager.Instance.GetRandomNumber()) {
-            health -= 2;
         }
         if(other.CompareTag("Wurfmesser") && trefferWurfmesser > GameManager.Instance.GetRandomNumber()) {
             health--;

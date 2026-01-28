@@ -10,7 +10,7 @@ public class EnemyTot : MonoBehaviour
             foreach(GameObject enemy in enemies) {
                 Destroy(enemy);
             }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }

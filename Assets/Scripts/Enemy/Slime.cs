@@ -43,12 +43,10 @@ public class Slime : BasisEnemy
                 }
             }
 
-            DropItem();
             SlimeKills++;
             //Save.SaveSlimeKills();
   
             StartCoroutine(WaitForSlimeDead());
-            Destroy(gameObject);
         }
         OnDeath(false, true, 2);
     }

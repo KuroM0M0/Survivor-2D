@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Kobold : BasisEnemy {
     GameObject Spieler;
-    public static bool Tot = false;
 
 
     void Start() {
@@ -27,10 +26,6 @@ public class Kobold : BasisEnemy {
         }
         if(other.CompareTag("Schwert")) {
             health--;
-        }
-
-        if(other.CompareTag("Messer")) {
-            health -= 2;
         }
     }
 

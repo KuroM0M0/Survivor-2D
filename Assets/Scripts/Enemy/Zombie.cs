@@ -30,8 +30,8 @@ public class Zombie : BasisEnemy {
             //Highscore.score++;
             //Tot = true;
             statKill++;
-            }
-            OnDeath(true, true, 1);
+        }
+        OnDeath(true, true, 1);
     }
 
     void OnTriggerEnter2D(Collider2D other) {

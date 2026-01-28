@@ -4,14 +4,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Leben : MonoBehaviour
+public class Leben : BasisPlayer
 {
-    public static int health;
     public GameObject Leben1;
     public GameObject Leben2;
     public GameObject Leben3;
-    int UnverwundbarTimer = 2;      //Sekunden
-    bool UnverwundbarBool = false;
+    
 
 
 
@@ -42,38 +40,26 @@ public class Leben : MonoBehaviour
     }
 
 
-
+//Schadensberechnung
     void OnTriggerEnter2D(Collider2D other) {
         if(UnverwundbarBool == false) {
             if(other.CompareTag("Enemy")) {
-            StartCoroutine(Unverwundbar());
-            health--;
-            Save.SaveLeben();
+                onDamage(1);
             }
 
-        if(other.CompareTag("SchadensTrank")) {
-            StartCoroutine(Unverwundbar());
-            health -= 2;
-            Save.SaveLeben();
+            if(other.CompareTag("SchadensTrank")) {
+                onDamage(2);
             }
 
-        if(other.CompareTag("Knochen")) {
-            StartCoroutine(Unverwundbar());
-            health--;
-            Save.SaveLeben();
+            if(other.CompareTag("Knochen")) {
+                onDamage(1);
+            }
+
+            if(other.CompareTag("Boss")) {
+                onDamage(2);
             }
         }
-        if(other.CompareTag("Boss")) {
-            StartCoroutine(Unverwundbar());
-            health-= 2;
-            Save.SaveLeben();
-        }
-        
     }
 
-    IEnumerator Unverwundbar() {
-        UnverwundbarBool = true;
-        yield return new WaitForSeconds(UnverwundbarTimer);
-        UnverwundbarBool = false;
-    }
+    
 }

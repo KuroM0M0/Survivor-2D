@@ -21,6 +21,8 @@ public class Hexe : BasisEnemy
         health = 5;
         maxHealth = 5;
         EnemyType = "Hexe";
+        target = GameObject.Find("Spieler");
+        player = GameObject.Find("Spieler").transform;
     } 
 
 
