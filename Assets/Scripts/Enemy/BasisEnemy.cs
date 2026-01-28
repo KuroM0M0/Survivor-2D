@@ -44,6 +44,7 @@ public abstract class BasisEnemy : MonoBehaviour
             //Level
             float xp = maxHealth / 2f;
             GameManager.Instance.AddXP(xp);
+            StatManager.Instance.AddStat(EnemyType, 1);
 
             //Drops
             if(Coin) {
