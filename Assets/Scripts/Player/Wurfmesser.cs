@@ -29,8 +29,8 @@ public class Wurfmesser : MonoBehaviour
                 wurfmesserRB.linearVelocity = direction.normalized * Speed;
                 GameManager.Instance.wurfmesser--;
                 wurfmesserStat++;
-                Save.SaveWurfmesser();
-                if(Save.Stats.ContainsKey("Wurfmesser")) {
+                //Save.SaveWurfmesser();
+                /*if(Save.Stats.ContainsKey("Wurfmesser")) {
                     Save.Stats["Wurfmesser"] = wurfmesserStat;
                 } else {
                     Save.Stats.Add("Wurfmesser", wurfmesserStat);

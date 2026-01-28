@@ -5,7 +5,7 @@ using BayatGames.SaveGameFree;
 
 public class Load : MonoBehaviour {
 
-    public static void LoadAll() {
+    /*public static void LoadAll() {
         LoadWurfmesser();
         LoadLeben();
         LoadAmmo();
@@ -15,7 +15,7 @@ public class Load : MonoBehaviour {
         LoadPosition();
         LoadSlimeKills();
         LoadHighscore();
-        LoadSchwert();
+        //LoadSchwert();
         LoadStatKills();
         LoadStats();
         LoadSpawnedEnemys();
@@ -32,6 +32,7 @@ public class Load : MonoBehaviour {
 
     public static int LoadWurfmesser() {
         if(Check("Wurfmesser")) {
+            Wurfmesser.wurfmesserAnzahl = SaveGame.Load<int>("Wurfmesser");
             return SaveGame.Load<int>("Wurfmesser");
         }
         return 0;
@@ -39,6 +40,7 @@ public class Load : MonoBehaviour {
 
     public static int LoadLeben() {
         if(Check("Leben")) {
+            BasisPlayer.health = SaveGame.Load<int>("Leben");
             return SaveGame.Load<int>("Leben");
         }
         return 0;
@@ -46,6 +48,7 @@ public class Load : MonoBehaviour {
 
     public static int LoadAmmo() {
         if(Check("Ammo")) {
+            Schuss.ammo = SaveGame.Load<int>("Ammo");
             return SaveGame.Load<int>("Ammo");
         }
         return 0;
@@ -53,27 +56,31 @@ public class Load : MonoBehaviour {
 
     public static int LoadCoin() {
         if(Check("Coin")) {
+            BasisShop.money = SaveGame.Load<int>("Coin");
             return SaveGame.Load<int>("Coin");
         }
         return 0;
     }
 
-    public static int LoadXP() {
+    public static float LoadXP() {
         if(Check("XP")) {
-            return SaveGame.Load<int>("XP");
+            GameManager.Instance.currentXp = SaveGame.Load<float>("XP");
+            return SaveGame.Load<float>("XP");
         }
         return 0;
     }
 
     public static int LoadLevel() {
         if(Check("Level")) {
+            GameManager.Instance.currentLevel = SaveGame.Load<int>("Level");
             return SaveGame.Load<int>("Level");
         }
         return 0;
     }
 
-     public static Vector2 LoadPosition() { 
+    public static Vector2 LoadPosition() { 
         if(Check("PlayerPos")) {
+            Bewegung.PlayerPos = SaveGame.Load<Vector2>("PlayerPos");
             return SaveGame.Load<Vector2>("PlayerPos");
         }
         return LoadPosition();
@@ -81,6 +88,7 @@ public class Load : MonoBehaviour {
 
     public static int LoadSlimeKills() {
         if(Check("SlimeKills")) {
+            Slime.SlimeKills = SaveGame.Load<int>("SlimeKills");
             return SaveGame.Load<int>("SlimeKills");
         } 
         return 0;
@@ -88,13 +96,15 @@ public class Load : MonoBehaviour {
 
     public static int LoadHighscore() {
         if(Check("Highscore")) {
+            Highscore.score = SaveGame.Load<int>("Highscore");
             return SaveGame.Load<int>("Highscore");
         }
         return 0;
     }
 
-    public static bool LoadSchwert() {
+    /*public static bool LoadSchwert() {
         if(Check("Schwert")) {
+            Inventar.HatSchwert = SaveGame.Load<bool>("Schwert");
             return SaveGame.Load<bool>("Schwert");
         }
         return true;
@@ -102,6 +112,7 @@ public class Load : MonoBehaviour {
 
     public static int LoadDash() {
         if(Check("Dash")) {
+            Dash.DashZahl = SaveGame.Load<int>("Dash");
             return SaveGame.Load<int>("Dash");
         } 
         return 0;
@@ -109,6 +120,7 @@ public class Load : MonoBehaviour {
 
     public static bool LoadDashFreigeschaltet() {
         if(Check("DashFreigeschaltet")) {
+            BasisPlayer.DashFreigeschaltet = SaveGame.Load<bool>("DashFreigeschaltet");
             return SaveGame.Load<bool>("DashFreigeschaltet");
         }
         return false;
@@ -123,6 +135,8 @@ public class Load : MonoBehaviour {
 
     public static float LoadSpeed() {
         if(Check("Speed")) {
+            BasisPlayer.speed = SaveGame.Load<float>("Speed");
+            BasisPlayer.normalSpeed = SaveGame.Load<float>("Speed");
             return SaveGame.Load<float>("Speed");
         }
         return BasisPlayer.speed;
@@ -130,6 +144,7 @@ public class Load : MonoBehaviour {
 
     public static int LoadMuniDrop() {
         if(Check("MuniDrop")) {
+            BasisPlayer.ammoDrop = SaveGame.Load<int>("MuniDrop");
             return SaveGame.Load<int>("MuniDrop");
         } 
         return 1;
@@ -137,6 +152,7 @@ public class Load : MonoBehaviour {
 
     public static int LoadGeldDrop() {
         if(Check("GeldDrop")) {
+            BasisPlayer.coinDrop = SaveGame.Load<int>("GeldDrop");
             return SaveGame.Load<int>("GeldDrop");
         } 
         return 1;
@@ -144,6 +160,7 @@ public class Load : MonoBehaviour {
 
     public static bool LoadAllDrop() {
         if(Check("AllDrop")) {
+            BasisPlayer.AllDrop = SaveGame.Load<bool>("AllDrop");
             return SaveGame.Load<bool>("AllDrop");
         }
         return false;
@@ -151,6 +168,7 @@ public class Load : MonoBehaviour {
 
     public static int LoadAdditionalDropChance() {
         if(Check("DropChance")) {
+            BasisPlayer.AdditionalDropChance = SaveGame.Load<int>("AdditionalDropChance");
             return SaveGame.Load<int>("AdditionalDropChance");
         }
         return 0;
@@ -158,6 +176,7 @@ public class Load : MonoBehaviour {
 
     public static int LoadMehrfachschuss() {
         if(Check("Mehrfachschuss")) {
+            BasisPlayer.Mehrfachschuss = SaveGame.Load<int>("Mehrfachschuss");
             return SaveGame.Load<int>("Mehrfachschuss");
         }
         return 1;
@@ -232,5 +251,5 @@ void Awake() {
         if(Menü.IsLoaded) {
             LoadSpawnedEnemys();
         }
-    }
+    }*/
 }

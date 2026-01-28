@@ -13,7 +13,7 @@ public class Zelt : BasisShop
 
     void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player")) {
-            Save.SaveAll();
+            SaveNew.SaveAll();
             SceneManager.LoadScene("Shop");
         }
     }
@@ -34,7 +34,7 @@ public class Zelt : BasisShop
         if(money >= 5) {
             MoneyChange(-5);
             Schuss.ammo += 24;
-            Save.SaveAmmo();
+            //Save.SaveAmmo();
         }
     }
 
@@ -52,7 +52,7 @@ public class Zelt : BasisShop
         if(money >= 10) {
             MoneyChange(-10);
             Dash.DashZahl++;
-            Save.SaveDash();
+            //Save.SaveDash();
         }
         
     }

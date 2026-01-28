@@ -36,6 +36,7 @@ public class Leben : MonoBehaviour
 
 
         if(health <= 0) {
+            SaveNew.SaveAll();
             SceneManager.LoadScene("Highscore");
         }
     }

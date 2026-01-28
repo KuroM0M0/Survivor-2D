@@ -45,8 +45,7 @@ public class Slime : BasisEnemy
 
             DropItem();
             SlimeKills++;
-            Highscore.score += 2;
-            Save.SaveSlimeKills();
+            //Save.SaveSlimeKills();
   
             StartCoroutine(WaitForSlimeDead());
             Destroy(gameObject);
@@ -63,7 +62,7 @@ public class Slime : BasisEnemy
         } 
 
         if(other.CompareTag("Player")) {
-            Bewegung.speed = 1;
+            BasisPlayer.speed = 1;
             SlimeOnPlayer = true;
             StartCoroutine(PlayerAttachet());
         }

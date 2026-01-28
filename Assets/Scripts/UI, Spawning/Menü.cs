@@ -22,11 +22,10 @@ public class Menü : MonoBehaviour
     //Laden
     public static bool IsLoaded = false;
     public GameObject LoadButton;
-    private int LebenFürButton; //regelt ob Laden Button im Menü angezeigt wird oder nicht
+    public static int LebenFürButton; //regelt ob Laden Button im Menü angezeigt wird oder nicht
 
     void Start() {
-        LebenFürButton = Load.LoadLeben();
-
+        LoadNew.LoadAll();
         if(resolutionDropdown == null) {
             return;
         }
@@ -54,7 +53,7 @@ public class Menü : MonoBehaviour
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
 
-        HighscoreMenü.text = "Highscore: " + Load.LoadHighscore();
+        HighscoreMenü.text = "Highscore: " + Highscore.highScore.ToString(); 
     }
 
     public void SetResolution(int resolutionIndex) {
@@ -88,13 +87,13 @@ public class Menü : MonoBehaviour
     }
 
     public void OnMenu() {
-        Save.SaveAll();
+        SaveNew.SaveAll();
         SceneManager.LoadScene("Hauptmenü");
         IsLoaded = false;
     }
 
     public void OnQuit() {
-        Save.SaveAll();
+        //SaveNew.SaveAll();
         Application.Quit();
     }
 
@@ -104,11 +103,9 @@ public class Menü : MonoBehaviour
 
    public void OnLoad() {
     SceneManager.LoadScene("Game");
-    Schuss.ammo = Load.LoadAmmo();
-    Leben.health = Load.LoadLeben();
-    Wurfmesser.wurfmesserAnzahl = Load.LoadWurfmesser();
-    Bewegung.PlayerPos = Load.LoadPosition();
-    Load.LoadSpawnedEnemys();
+    LoadNew.LoadAll();
+    GameManager.Instance.levelupMenu = GameObject.FindGameObjectWithTag("LevelupMenu").GetComponent<Levelup>();
+    print(GameManager.Instance.levelupMenu);
     IsLoaded = true;
     Pause.pausiert = false;
    }

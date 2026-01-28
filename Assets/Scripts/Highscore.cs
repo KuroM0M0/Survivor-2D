@@ -1,26 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using BayatGames.SaveGameFree;
 
 public class Highscore : MonoBehaviour
 {
     public static int score = 0;
-    int LocalScore;
+    public static int highScore;
     public Text Endscore;
 
     void Update() {
-        if (Endscore != null) {
-            Endscore.text = "Score: " + score;
-            if(LocalScore < score) {
-                Save.SaveScore();
-            }
+        if(highScore < score) {
+            highScore = score;
         }
-    }
 
-    void Start() {
-        SaveGame.Encode = false;
-        LocalScore = Load.LoadHighscore();
+        if(Endscore != null) {
+            Endscore.text = "Score: " + score;
+        }
     }
 }

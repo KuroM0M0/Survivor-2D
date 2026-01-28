@@ -7,6 +7,8 @@ public class Dash : MonoBehaviour
 
     public static int DashStat = 0; //Für Stats
     public static int DashZahl = 2;
+    public static int DashSpeed = 7;
+    public static int DashCooldown = 10;
 
     public float cooldown = 10f;
     bool ready = true;
@@ -18,16 +20,17 @@ public class Dash : MonoBehaviour
             cooldown -= Time.deltaTime;
         }
 
-        if(Input.GetKey(KeyCode.Y) && cooldown <= 0 && DashZahl > 0) {
-            Bewegung.speed = 7;
+        if(Input.GetKey(KeyCode.Y) && cooldown <= 0 && DashZahl > 0 && BasisPlayer.DashFreigeschaltet) {
+            BasisPlayer.speed = DashSpeed;
             DashStat ++; //Für Stats
             ready = false;
+            DashZahl--;
 
-            if(Save.Stats.ContainsKey("Dash")) {
+            /*if(Save.Stats.ContainsKey("Dash")) {
                 Save.Stats["Dash"] = DashStat;
             } else {
                 Save.Stats.Add("Dash", DashStat);
-            }
+            }*/
         }
 
         if(ready == false) {
@@ -37,8 +40,8 @@ public class Dash : MonoBehaviour
 
     IEnumerator Dashcool() {
         yield return new WaitForSeconds(1);
-        Bewegung.speed = 1.6f;
-        cooldown = 10;
+        BasisPlayer.speed = BasisPlayer.normalSpeed;
+        cooldown = DashCooldown;
         ready = true;
     }
 }

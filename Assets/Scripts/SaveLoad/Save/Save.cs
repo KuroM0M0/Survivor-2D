@@ -6,11 +6,11 @@ using UnityEngine.Analytics;
 
 public class Save : MonoBehaviour {
 
-    public static void SaveAll() {
+    /*public static void SaveAll() {
         SavePlayerPos();
         SaveLevel();
         SaveSlimeKills();
-        //SaveScore();
+        SaveScore();
         SaveCoin();
         SaveLeben();
         SaveXP();
@@ -50,7 +50,7 @@ public class Save : MonoBehaviour {
     }
 
     public static void SaveLeben() {
-        SaveGame.Save("Leben", Leben.health);
+        SaveGame.Save("Leben", BasisPlayer.health);
     }
 
     public static void SaveXP() {
@@ -74,23 +74,23 @@ public class Save : MonoBehaviour {
     }
 
     public static void SaveDashFreigeschaltet() {
-        SaveGame.Save("DashFreigeschaltet", LevelUpAuswahl.DashFreigeschaltet);
+        SaveGame.Save("DashFreigeschaltet", BasisPlayer.DashFreigeschaltet);
     }
 
     public static void SaveWurfmesserFreigeschaltet() {
-        SaveGame.Save("WurfmesserFreigeschaltet", LevelUpAuswahl.WurfmesserFreigeschaltet);
+        SaveGame.Save("WurfmesserFreigeschaltet", BasisPlayer.WurfmesserFreigeschaltet);
     }
 
     public static void SaveSpeed() {
-        SaveGame.Save("Speed", BasisPlayer.speed);
+        SaveGame.Save("Speed", BasisPlayer.normalSpeed);
     }
 
     public static void SaveMuniDrop() {
-        SaveGame.Save("MuniDrop", BasisPlayer.MuniDrop);
+        SaveGame.Save("MuniDrop", BasisPlayer.ammoDrop);
     }
 
     public static void SaveGeldDrop() {
-        SaveGame.Save("GeldDrop", BasisPlayer.GeldDrop);
+        SaveGame.Save("GeldDrop", BasisPlayer.coinDrop);
     }
 
     public static void SaveAllDrop() {
@@ -128,5 +128,5 @@ public class Save : MonoBehaviour {
         }
 
         SaveGame.Save("SpawnedEnemys", spawnedEnemys);
-    }
+    }*/
 }
