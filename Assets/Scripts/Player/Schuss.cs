@@ -17,8 +17,7 @@ public class Schuss : MonoBehaviour
 
 
 
-    void Start()
-    {
+    void Start() {
         // Holen der Referenz auf den Rigidbody des Waffe-GameObjects
         rb = GetComponent<Rigidbody2D>();
         Munition.text = ammo.ToString();
